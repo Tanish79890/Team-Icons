@@ -2,12 +2,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Ticket Booking</title>
+  <title> Icon Movies  </title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: white;
-      color: blue;
+      color: orange;
       margin: 0;
       padding: 20px;
     }
@@ -29,7 +29,7 @@
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      border: 1px solid blue;
+      border: 1px solid black;
       border-radius: 5px;
       background-color: white;
       color: blue;
@@ -39,7 +39,7 @@
       font-weight: bold;
     }
     button:hover {
-      background-color: blue;
+      background-color: orange;
       color: white;
     }
     .summary {
@@ -56,16 +56,16 @@
       <label for="movie">Select Movie:</label>
       <select id="movie" required>
         <option value="">--Choose a Movie--</option>
-        <option value="Movie A">Movie A</option>
-        <option value="Movie B">Movie B</option>
-        <option value="Movie C">Movie C</option>
+        <option value="Movie A">OG</option>
+        <option value="Movie B"> SAARIPODHA SANIVARAM</option>
+        <option value="Movie C">MIRAAI</option>
       </select><label for="time">Select Time:</label>
   <select id="time" required>
     <option value="">--Choose Showtime--</option>
-    <option value="10:00 AM">10:00 AM</option>
-    <option value="1:00 PM">1:00 PM</option>
-    <option value="6:00 PM">6:00 PM</option>
-    <option value="9:00 PM">9:00 PM</option>
+    <option value="10:00 AM">11:15 AM</option>
+    <option value="1:00 PM"> 02:30 PM</option>
+    <option value="6:00 PM">6:15 PM</option>
+    <option value="9:00 PM">9:30 PM</option>
   </select>
 
   <label for="tickets">Number of Tickets:</label>
@@ -88,7 +88,7 @@
       const tickets = document.getElementById('tickets').value;
 
       if (movie && time && tickets) {
-        const pricePerTicket = 150; // Example ticket price
+        const pricePerTicket = 145; // Example ticket price
         const total = tickets * pricePerTicket;
 
         summary.innerHTML = `
