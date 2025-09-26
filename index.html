@@ -43,3 +43,90 @@
         <select id="showtime-select"></select>
         <input type="number" id="seats" placeholder="Seats">
         <button type="submit">
+
+            
+           BACKEND CODE
+Back-end (server.js)
+            
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/movieTickets', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Define schema for movies
+const movieSchema = new mongoose.Schema({
+    title: String,
+    showtimes: [String],
+    seats: Number,
+    price: Number
+});
+const Movie = mongoose.model('Movie', movieSchema);
+
+// Define schema for bookings
+const bookingSchema = new mongoose.Schema({
+    movie: String,
+    showtime: String,
+    seats: Number,
+    user: String,
+    totalPrice: Number
+});
+const Booking = mongoose.model('Booking', bookingSchema);
+
+// Define schema for users
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    password: String
+});
+const User = mongoose.model('User', userSchema);
+
+// Middleware
+app.use(express.json());
+
+// Routes
+app.get('/movies', async (req, res) => {
+    const movies = await Movie.find();
+    res.json(movies);
+});
+
+app.post('/book', async (req, res) => {
+    const { movie, showtime, seats, user } = req.body;
+    const movieData = await Movie.findOne({ title: movie });
+    const totalPrice = movieData.price * seats;
+    const booking = new Booking({ movie, showtime, seats, user, totalPrice });
+    await booking.save();
+    res.json({ message: 'Booking successful' });
+});
+
+app.post('/register', async (req, res) => {
+    const { name, email, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({ name, email, password: hashedPassword });
+    await user.save();
+    res.json({ message: 'User registered successfully' });
+});
+
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+    }
+    const isValidPassword = await bcrypt.compare(password, user.password);
+    if (!isValidPassword) {
+        return res.status(401).json({ message: 'Invalid email or password' });
+    }
+    const token = jwt.sign({ userId: user._id }, 'secretkey', { expiresIn: '1h' });
+    res.json({ token });
+});
+
+// Start server
+const port = 3000;
+app.listen(port, () => {
+    console.log(Server running at http://localhost:${port});
+});
+
