@@ -42,74 +42,8 @@
         <select id="movie-select"></select>
         <select id="showtime-select"></select>
         <input type="number" id="seats" placeholder="Seats">
-        <button type="submit">Book</button>
+        <button type="submit">save</button> 
+
     </form>
-
-    <script>
-        // Fetch movies from server
-        fetch('http://localhost:3000/movies')
-            .then(response => response.json())
-            .then(movies => {
-                const movieSelect = document.getElementById('movie-select');
-                movies.forEach(movie => {
-                    const option = document.createElement('option');
-                    option.text = movie.title;
-                    option.value = movie.title;
-                    movieSelect.appendChild(option);
-
-                    const movieDiv = document.createElement('div');
-                    movieDiv.classList.add('movie');
-                    movieDiv.innerHTML = `
-                        <h2>${movie.title}</h2>
-                        <p>Showtimes: ${movie.showtimes.join(', ')}</p>
-                        <p>Seats: ${movie.seats}</p>
-                    `;
-                    document.getElementById('movies').appendChild(movieDiv);
-                });
-            })
-            .catch(error => console.error(error));
-
-        // Populate showtime select
-        document.getElementById('movie-select').addEventListener('change', (e) => {
-            const movieTitle = e.target.value;
-            fetch(http://localhost:3000/movies/${movieTitle})
-                .then(response => response.json())
-                .then(movie => {
-                    const showtimeSelect = document.getElementById('showtime-select');
-                    showtimeSelect.innerHTML = '';
-                    movie.showtimes.forEach(showtime => {
-                        const option = document.createElement('option');
-                        option.text = showtime;
-                        option.value = showtime;
-                        showtimeSelect.appendChild(option);
-                    });
-                })
-                .catch(error => console.error(error));
-        });
-
-        // Handle register form submission
-        document.getElementById('register-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            fetch('http://localhost:3000/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, password }),
-            })
-                .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => console.error(error));
-        });
-
-        // Handle login form submission
-        document.getElementById('login-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            fetch('http://localhost:3000/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password }),
-            })
+</body>
+</html>
