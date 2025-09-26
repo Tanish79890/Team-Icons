@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .movies {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .movie {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Ticket Booking</h1>
+    <div class="movies" id="movies"></div>
+    <form id="register-form">
+        <h2>Register</h2>
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button type="submit">Register</button>
+    </form>
+    <form id="login-form">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email">
+        <input type="password" id="login-password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+    <form id="book-form">
+        <h2>Book Ticket</h2>
+        <select id="movie-select"></select>
+        <select id="showtime-select"></select>
+        <input type="number" id="seats" placeholder="Seats">
+        <button type="submit">
