@@ -68,6 +68,19 @@
     <option value="9:30 PM">9:30 PM</option>
   </select>
 <select id="Seats" required>
+  <div class="seat-selection">
+  <h2>Select Seats</h2>
+  <div class="seats">
+    <!-- Generate seats dynamically -->
+    <div class="seat" id="seat-1" data-seat="1">1</div>
+    <div class="seat" id="seat-2" data-seat="2">2</div>
+    <div class="seat" id="seat-3" data-seat="3">3</div>
+    <!-- ... -->
+  </div>
+  <button id="book-seats">Book Selected Seats</button>
+  <p id="selected-seats"></p>
+</div>
+
       <option value="">--Choose Seats--</option>
   <option value= "A-1 ">A-1</option>
   <option value= "A-2 ">A-2</option>
