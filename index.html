@@ -84,8 +84,17 @@
 
       <option value="">--Choose Seats--</option>
   <option value= "A-1, A-2,A-3, A-4 ">A-1,A-2, A-3, A-4</option>
+  <option value= "A-1, A-2,A-3 ">A-1,A-2, A-3</option>
+  <option value= "A-1, A-2">A-1,A-2</option>
+  <option value= "A-1">A-1</option>
+<option value= "A-2 ">A-2</option>
+   <option value= "A-3 ">A-3</option>
+   <option value= "A-4 ">A-4</option>
  <option value= "A-5 ">A-5</option>
-  <option value= "B-1 ">B-1</option>
+   <option value= "B-1, B-2,B-3, B-4 ">B-1,B-2, B-3, B-4</option>
+  <option value= "B-1, B-2,B-3 ">B-1,B-2, B-3</option>
+  <option value= "B-1, B-2">B-1,B-2</option>
+ <option value= "B-1 ">B-1</option>
    <option value= "B-2 ">B-2</option>
    <option value= "B-3 ">B-3</option>
    <option value= "B-4 ">B-4</option>
@@ -120,6 +129,29 @@
           <p><strong>Tickets:</strong> ${tickets}</p>
           <p><strong>Total Price:</strong> ₹${total}</p>
           <button onclick="alert('Booking Confirmed!')">Confirm Booking</button>
+          <div class="payment-method">
+  <h2>Payment Method</h2>
+  <form>
+    <label>
+      <input type="radio" name="payment-method" value="credit-card">
+      Credit Card
+    </label>
+    <label>
+      <input type="radio" name="payment-method" value="paypal">
+      PayPal
+    </label>
+    <label>
+      <input type="radio" name="payment-method" value="net-banking">
+      Net Banking
+    </label>
+    <!-- ... -->
+    <div id="payment-details"></div>
+    <button id="make-payment">Make Payment</button>
+  </form>
+</div>
+
+
+
           <button onclick="alert( 'THANK YOU ICON MOVIES')"> THANK YOU "ICON MOVIES" </button>
         `;
       }
