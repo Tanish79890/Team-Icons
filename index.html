@@ -2,12 +2,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Icon Movies  </title>
+  <title>Movie Ticket Booking</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: white;
-      color: orange;
+      color: blue;
       margin: 0;
       padding: 20px;
     }
@@ -18,7 +18,7 @@
       max-width: 600px;
       margin: auto;
       padding: 20px;
-      border: 2px solid orange;
+      border: 2px solid blue;
       border-radius: 10px;
     }
     label {
@@ -29,76 +29,45 @@
       width: 100%;
       padding: 10px;
       margin-top: 5px;
-      border: 1px solid black;
+      border: 1px solid blue;
       border-radius: 5px;
       background-color: white;
-      color:orange;
+      color: blue;
     }
     button {
       cursor: pointer;
       font-weight: bold;
     }
     button:hover {
-      background-color: orange;
+      background-color: blue;
       color: white;
     }
     .summary {
       margin-top: 20px;
       padding: 10px;
-      border: 1px dashed orange;
+      border: 1px dashed blue;
     }
   </style>
 </head>
 <body>
-  <h1>🎬 "ICON MOVIES"</h1>
+  <h1>🎬 Movie Ticket Booking</h1>
   <div class="container">
     <form id="bookingForm">
       <label for="movie">Select Movie:</label>
       <select id="movie" required>
         <option value="">--Choose a Movie--</option>
-        <option value="OG">OG</option>
-        <option value="SAARIPODHA SANIVARAM"> SAARIPODHA SANIVARAM</option>
-        <option value="MIRAAI">MIRAAI</option>
+        <option value="Movie A">Movie A</option>
+        <option value="Movie B">Movie B</option>
+        <option value="Movie C">Movie C</option>
       </select><label for="time">Select Time:</label>
   <select id="time" required>
     <option value="">--Choose Showtime--</option>
-    <option value= "11:15 AM">11:15 AM</option>
-    <option value="02:30 PM"> 02:30 PM</option>
-    <option value="6:15 PM">6:15 PM</option>
-    <option value="9:30 PM">9:30 PM</option>
+    <option value="10:00 AM">10:00 AM</option>
+    <option value="1:00 PM">1:00 PM</option>
+    <option value="6:00 PM">6:00 PM</option>
+    <option value="9:00 PM">9:00 PM</option>
   </select>
-<select id="Seats" required>
-  <div class="seat-selection">
-  <h2>Select Seats</h2>
-  <div class="seats">
-    <!-- Generate seats dynamically -->
-    <div class="seat" id="seat-1" data-seat="1">1</div>
-    <div class="seat" id="seat-2" data-seat="2">2</div>
-    <div class="seat" id="seat-3" data-seat="3">3</div>
-    <!-- ... -->
-  </div>
-  <button id="book-seats">Book Selected Seats</button>
-  <p id="selected-seats"></p>
-</div>
 
-
-      <option value="">--Choose Seats--</option>
-  <option value= "A-1, A-2,A-3, A-4 ">A-1,A-2, A-3, A-4</option>
-  <option value= "A-1, A-2,A-3 ">A-1,A-2, A-3</option>
-  <option value= "A-1, A-2">A-1,A-2</option>
-  <option value= "A-1">A-1</option>
-<option value= "A-2 ">A-2</option>
-   <option value= "A-3 ">A-3</option>
-   <option value= "A-4 ">A-4</option>
- <option value= "A-5 ">A-5</option>
-   <option value= "B-1, B-2,B-3, B-4 ">B-1,B-2, B-3, B-4</option>
-  <option value= "B-1, B-2,B-3 ">B-1,B-2, B-3</option>
-  <option value= "B-1, B-2">B-1,B-2</option>
- <option value= "B-1 ">B-1</option>
-   <option value= "B-2 ">B-2</option>
-   <option value= "B-3 ">B-3</option>
-   <option value= "B-4 ">B-4</option>
-   <option value= "B-5 ">B-5</option>
   <label for="tickets">Number of Tickets:</label>
   <input type="number" id="tickets" min="1" max="10" required>
 
@@ -119,40 +88,16 @@
       const tickets = document.getElementById('tickets').value;
 
       if (movie && time && tickets) {
-        const pricePerTicket = 145; // Example ticket price
+        const pricePerTicket = 150; // Example ticket price
         const total = tickets * pricePerTicket;
-BOOKING SUMMARY.innerHTML = `
+
+        summary.innerHTML = `
           <h2>Booking Summary</h2>
           <p><strong>Movie:</strong> ${movie}</p>
           <p><strong>Showtime:</strong> ${time}</p>
           <p><strong>Tickets:</strong> ${tickets}</p>
           <p><strong>Total Price:</strong> ₹${total}</p>
           <button onclick="alert('Booking Confirmed!')">Confirm Booking</button>
-
-         <div class="payment-method">
-  <h2>Payment Method</h2>
-  <form>
-    <label>
-      <input type="radio" name="payment-method" value="credit-card">
-      Credit Card
-    </label>
-    <label>
-      <input type="radio" name="payment-method" value="paypal">
-      PayPal
-    </label>
-    <label>
-      <input type="radio" name="payment-method" value="net-banking">
-      Net Banking
-    </label>
-    <!-- ... -->
-    <div id="payment-details"></div>
-    <button id="make-payment">Make Payment</button>
-  </form>
-</div>
- 
-
-
-          <button onclick="alert( 'THANK YOU ICON MOVIES')"> THANK YOU "ICON MOVIES" </button>
         `;
       }
     });
